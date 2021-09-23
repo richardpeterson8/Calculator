@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignment Calculator</title>
+
+
+    <link rel="stylesheet" href="css/styles.css?v=1.3">
+    <script type="text/javascript" src="js/jquery/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/moment/moment.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/ics.js-master/ics.js?version=2"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PF15Q2VZK1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PF15Q2VZK1');
+    </script>
+
+   
+
+    <!-- start -->
+    <script type="text/javascript">
+        var links = [
+            { "id": "1", "title": "Access your Moodle site", "url": "https://www.uow.edu.au/student/learning-co-op/technology-and-software/moodle/" },
+            { "id": "2", "title": "Analysing Assessment Tasks", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/analysing-question/" },
+            { "id": "3", "title": "Subject outlines", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/subject-outline/" },
+            { "id": "4", "title": "Understanding marking rubrics", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/rubrics/" },
+            { "id": "5", "title": "Assessment type", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/" },
+            { "id": "6", "title": "Identifying keywords", "url": "https://www.uow.edu.au/student/learning-co-op/finding-and-using-information/keywords/" },
+            { "id": "7", "title": "Concept Mapping", "url": "https://www.uow.edu.au/student/learning-co-op/effective-studying/concept-mapping/" },
+            { "id": "8", "title": "Find useful information", "url": "https://www.uow.edu.au/student/learningcoop/finduseinfo/index.html" },
+            { "id": "9", "title": "Evaluating sources", "url": "https://www.uow.edu.au/student/learning-co-op/finding-and-using-information/evaluating-the-quality-of-online-information/" },
+            { "id": "10", "title": "Note-taking", "url": "https://www.uow.edu.au/student/learning-co-op/effective-studying/note-taking/" },
+            { "id": "11", "title": "Evernote", "url": "https://www.uow.edu.au/student/learning-co-op/technology-and-software/evernote/" },
+            { "id": "12", "title": "Effective reading", "url": "https://www.uow.edu.au/student/learning-co-op/effective-studying/effective-reading/" },
+            { "id": "13", "title": "Academic Integrity", "url": "https://www.uow.edu.au/about/governance/academic-integrity/students/" },
+            { "id": "14", "title": "Paraphrase", "url": "https://www.uow.edu.au/student/learning-co-op/effective-studying/paraphrasing/" },
+            { "id": "15", "title": "Critical Analysis", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/critical-analysis/" },
+            { "id": "16", "title": "Developing an argument", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/argument/" },
+            { "id": "17", "title": "Referencing and Citing", "url": "https://www.uow.edu.au/student/learning-co-op/referencing-and-citing/" },
+            { "id": "18", "title": "Turnitin", "url": "https://www.uow.edu.au/student/learning-co-op/technology-and-software/turnitin/" },
+            { "id": "19", "title": "Moodle", "url": "https://www.uow.edu.au/student/learning-co-op/technology-and-software/moodle/" },
+            { "id": "20", "title": "Coversheets", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/cover-sheets/" },
+            { "id": "21", "title": "Understanding Assessment Feedback", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/understanding-assessment-feedback/" },
+            { "id": "22", "title": "Essay writing", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/essays/" },
+            { "id": "23", "title": "Group work", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/group-work/" },
+            { "id": "24", "title": "Contact the Librarians", "url": "https://uow.libanswers.com/" },
+            { "id": "25", "title": "Report writing and structure", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/reports/" },
+            { "id": "26", "title": "The structure of scientific reports", "url": "https://unilearning.uow.edu.au/report/2b.html" },
+            { "id": "27", "title": "Research proposal", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/research-proposals/" },
+            { "id": "28", "title": "Literature reviews", "url": "https://www.uow.edu.au/student/learning-co-op/assessments/literature-review/" },
+            { "id": "29", "title": "Thesis requirements", "url": "https://www.uow.edu.au/research-and-innovation/graduate-research/thesis-and-examinations/" },
+            { "id": "30", "title": "Finding Theses", "url": "https://uow.libguides.com/finding-information/theses" },
+            { "id": "31", "title": "Citation management tools", "url": "http://uow.libguides.com/refcite/tools" },
+            { "id": "32", "title": "Library Research Support", "url": "https://uow.libguides.com/support-researchers" },
+            { "id": "33", "title": "Literature reviews", "url": "https://uow.libguides.com/literaturereview" },
+            { "id": "34", "title": "UOW MOOC: How to do a Literature Review", "url": "https://www.furturelearn.com/courses/research-writing" },
+            { "id": "35", "title": "Research Tracker", "url": "https://tr.uow.edu.au/uow/file/13fd247b-e4f0-4783-8b50-c7c07685f85b/1/SearchTracker.xlsx" },
+            { "id": "36", "title": "Librarians", "url": "https://uow.libwizard.com/consultation" },
+            { "id": "37", "title": "Thesis writing", "url": "https://www.uow.edu.au/student/support-services/learning-development/resources/" },
+            { "id": "38", "title": "Workshops", "url": "https://www.uow.edu.au/student/support-services/learning-development/" },
+            { "id": "39", "title": "PODs", "url": "https://www.uow.edu.au/research-and-innovation/graduate-research/workshops-seminars-training-and-events" },
+            { "id": "40", "title": "Learning Development", "url": "https://www.uow.edu.au/student/support-services/learning-development/" },
+            { "id": "41", "title": "Thesis submission", "url": "https://www.uow.edu.au/research-and-innovation/graduate-research/thesis-and-examinations/" }
+        ];
+
+        var general = [
+            { "type": "general", "step": "1", "time": "0.00", "steptitle": "Plan: Understand your AUDIENCE", "links": [1, 2, 3, 4, 5] },
+            { "type": "general", "step": "2", "time": "0.10", "steptitle": "Plan: Gather the right INFORMATION", "links": [6, 7] },
+            { "type": "general", "step": "3", "time": "0.20", "steptitle": "Plan: Develop your MESSAGE", "links": [8, 9] },
+            { "type": "general", "step": "4", "time": "0.10", "steptitle": "Write: Set the right TONE", "links": [10, 7, 11, 12] },
+            { "type": "general", "step": "5", "time": "0.10", "steptitle": "Write: Apply a clear and concise STYLE", "links": [13, 14, 15, 16] },
+            { "type": "general", "step": "6", "time": "0.05", "steptitle": "Write: Focus on navigational DESIGN", "links": [17, 18] },
+            { "type": "general", "step": "7", "time": "0.10", "steptitle": "Review: Get FEEDBACK", "links": [19, 20, 18] },
+            { "type": "general", "step": "8", "time": "0.05", "steptitle": "Review: Ensure your message is F.A.I.R.", "links": [19, 20, 18] },
+			{ "type": "general", "step": "9", "time": "0.10", "steptitle": "Review: Make sure to PROOFREAD", "links": [19, 20, 18] },
+			{ "type": "general", "step": "10", "time": "0", "steptitle": "Review your assessment task feedback", "links": [21] }
+        ];
+        var essay = [
+            { "type": "essay", "step": "1", "time": "0.05", "steptitle": "Step 1: READ Assignment Instructions", "links": [1, 2, 3, 4] },
+            { "type": "essay", "step": "2", "time": "0.05", "steptitle": "Step 2: UNDERSTAND Requirements and Audience", "links": [6, 7] },
+            { "type": "essay", "step": "3", "time": "0.15", "steptitle": "Step 3: GATHER Required Information", "links": [8, 9] },
+            { "type": "essay", "step": "4", "time": "0.25", "steptitle": "Step 4: PLAN, PLAN, PLAN", "links": [10, 7, 11, 12] },
+            { "type": "essay", "step": "5", "time": "0.25", "steptitle": "Step 5: DRAFT", "links": [22, 13, 14, 15, 16] },
+            { "type": "essay", "step": "6", "time": "0.10", "steptitle": "Step 6: REVIEW", "links": [17, 18] },
+            { "type": "essay", "step": "7", "time": "0.15", "steptitle": "Step 7: REVISE", "links": [19, 20, 18] },
+            { "type": "essay", "step": "8", "time": "0.00", "steptitle": "Step 8: SUBMIT", "links": [17, 18] },
+            { "type": "essay", "step": "9", "time": "0.00", "steptitle": "Step 9: NOTE Lessons Learned", "links": [19, 20, 18] },
+			{ "type": "essay", "step": "10", "time": "0", "steptitle": "Review your assessment task feedback", "links": [21] }
+        ];
+        var report = [
+            { "type": "report", "step": "1", "time": "0.01", "steptitle": "Step 1: Get started", "links": [1, 2, 3, 4, 5] },
+            { "type": "report", "step": "2", "time": "0.08", "steptitle": "Step 2: Analyse the Task", "links": [6, 7, 23] },
+            { "type": "report", "step": "3", "time": "0.25", "steptitle": "Step 3: Search for quality information", "links": [8, 9, 24] },
+            { "type": "report", "step": "4", "time": "0.15", "steptitle": "Step 4: Notetaking and using sources", "links": [10, 7, 4, 12] },
+            { "type": "report", "step": "5", "time": "0.40", "steptitle": "Step 5: Develop overall Report structure. Draft sections of the report. Organise sources.", "links": [25, 26, 13, 14, 15, 16] },
+            { "type": "report", "step": "6", "time": "0.10", "steptitle": "Step 6: Edit, proofread, and edit again", "links": [17, 18] },
+            { "type": "report", "step": "7", "time": "0.01", "steptitle": "Step 7: Submit your assessment - well done!", "links": [19, 20, 18] },
+            { "type": "report", "step": "8", "time": "0", "steptitle": "Review your assessment task feedback", "links": [21] }
+        ];
+        var presentation = [
+            { "type": "presentation", "step": "1", "time": "0.01", "steptitle": "Step 1: Get started", "links": [1, 2, 3, 4, 5] },
+            { "type": "presentation", "step": "2", "time": "0.08", "steptitle": "Step 2: Analyse the Task", "links": [6, 7, 23] },
+            { "type": "presentation", "step": "3", "time": "0.20", "steptitle": "Step 3: Search for quality information", "links": [8, 9] },
+            { "type": "presentation", "step": "4", "time": "0.10", "steptitle": "Step 4: Notetaking and using sources", "links": [10, 7, 11, 12] },
+            { "type": "presentation", "step": "5", "time": "0.40", "steptitle": "Step 5: Develop overall oral presentation structure. Select the method you will use. Organise sources.", "links": [13, 14, 15, 16] },
+            { "type": "presentation", "step": "6", "time": "0.15", "steptitle": "Step 6: Edit, proofread, and practise, practise for content, flow, and timing", "links": [17, 18] },
+            { "type": "presentation", "step": "7", "time": "0.05", "steptitle": "Step 7: Final rehearsal and the presentation - well done!", "links": [19, 20, 18] },
+            { "type": "presentation", "step": "8", "time": "0", "steptitle": "Review your assessment task feedback", "links": [21] }
+        ];
+        var thesis = [
+            { "type": "thesis", "step": "1", "time": "0.05", "steptitle": "Step 1: Identify and refine your research question", "links": [1, 2, 3, 27, 28, 29, 30, 31] },
+            { "type": "thesis", "step": "2", "time": "0.05", "steptitle": "Step 2: Develop the research design and methodology", "links": [6, 7, 32] },
+            { "type": "thesis", "step": "3", "time": "0.15", "steptitle": "Step 3: Review the literature and write the proposal", "links": [8, 9, 33, 35, 36, 37, 38, 39] },
+            { "type": "thesis", "step": "4", "time": "0.30", "steptitle": "Step 4: Gather and analyse your data", "links": [10, 7, 11, 12] },
+            { "type": "thesis", "step": "5", "time": "0.25", "steptitle": "Step 5: Write the Results and Discussion sections. Update the Introduction and Literature Review sections.", "links": [13, 14, 15, 16, 36, 40] },
+            { "type": "thesis", "step": "6", "time": "0.15", "steptitle": "Step 6: Edit Dissertation draft & prepare for your defence", "links": [17, 41] },
+            { "type": "thesis", "step": "7", "time": "0.05", "steptitle": "Step 7: Submit your assessment - well done!", "links": [41, 18] }
+        ];
+        function makelogs(obj) {
+            console.log('Events Array');
+            console.log('=================');
+            console.log(obj.events());
+            console.log('Calendar With Header');
+            console.log('=================');
+            console.log(obj.calendar());
+        }
+        function downloadCal(steptitle, stepdescription, startdate, enddate) {
+
+            cal_single = ics();
+            cal_single.addEvent(steptitle, stepdescription, '', startdate, enddate);
+            cal_single.download(steptitle);
+            makelogs(cal_single);
+
+        }
+
+        function hideall() {
+            $("#step1").hide();
+            $("#step2").hide();
+            $("#step3").hide();
+            $("#step4").hide();
+            $("#step5").hide();
+            $("#step6").hide();
+            $("#step7").hide();
+            $("#step8").hide();
+			$("#step9").hide();
+			$("#step10").hide();
+        }
+        function remember(type, atitle, startdate, enddate) {
+            sessionStorage.setItem('assignmentType', type);
+            sessionStorage.setItem('assignmentTitle', atitle);
+            sessionStorage.setItem('startdate', startdate);
+            sessionStorage.setItem('enddate', enddate);
+        }
+        function forget() {
+            sessionStorage.removeItem('assignmentType');
+            sessionStorage.removeItem('assignmentTitle');
+            sessionStorage.removeItem('startdate');
+            sessionStorage.removeItem('enddate');
+            sessionStorage.removeItem('lastclick');
+        }
+        function calculate(type, atitle, startdate, enddate) {
+            gtag('event', 'calculate', { 'event_category': 'assignment type', 'event_label': type })
+
+            hideall();
+            var datediff = enddate.diff(startdate, "days");
+            var initdate = moment(startdate);
+            var timespent = 0;
+            var prevdate = moment(initdate);
+            $.each(window[type], function (i, obj) {
+                startdate = moment(initdate);
+                timespent = timespent + Number(obj.time);
+                // console.log(timespent);
+                var stepdate = startdate.add(timespent * datediff, 'days');
+                $("#step" + obj.step).show();
+                $("#step" + obj.step + " .date").html(stepdate.format('LL'));
+                $("#step" + obj.step + " .title").html(obj.steptitle);
+                $("#step" + obj.step + " .bodytext").hide();
+                $("#step" + obj.step + " ." + type + "-body").show();
+
+                //    console.log(("#step" + obj.step + " ." + type + "-body"));
+                var linkshtml = "<ul>";
+                var linksplain = "<p>Helpful links:</p>";
+                $.each(links, function (k, link) {
+                    if (obj.links.indexOf(Number(link.id)) >= 0) {
+                        linkshtml += "<li><a class=\"hlink\" data-id=\"" + link.id + "\" href=\"" + link.url + "\"" + " onclick=\"gtag('event','click', {'event_category':'outbound', 'event_label':'" + link.url + "'})\">" + link.title + "</a></li>";
+                        //  console.log(obj.links.indexOf(Number(link.id)) + " " + link.url);
+                        linksplain += "<li>" + link.title + ": " + link.url + "</li>";
+                    }
+                });
+                linkshtml += "</ul>";
+                var cleandescription = $("#step" + obj.step + " ." + type + "-body").html().trim().replace(/  +/g, ' ').replace(/"/g, '\\"').replace(/[\t\n]+/g, '').replace(/'/g, "\\'");
+                cleandescription += linksplain;
+                var subjectline = "";
+                if (atitle != "") {
+                    subjectline = atitle + " - " + obj.steptitle;
+                }
+                else {
+                    subjectline = obj.steptitle
+                }
+                $("#step" + obj.step + " .panel-body .btnAddToCal").attr("onclick", "downloadCal('" + subjectline + "','" + cleandescription + "'," + stepdate + "," + stepdate.add(1, 'days') + ")");
+                prevdate = stepdate;
+
+                $("#step" + obj.step + " .links").html(linkshtml);
+                $("#step" + obj.step + " .links li a").bind('click', function (e) {
+                    // remember where I'm up to
+                    sessionStorage.setItem('lastclick', obj.step);
+                })
+            });
+            $('#pnlResults').hide();
+            if (sessionStorage.getItem('lastclick') != null) {
+                // I've been here before, go to last step I was on
+                $('#pnlResults').show();
+                //   lastclick = sessionStorage.getItem('lastclick');
+                // var element = document.getElementById('step' + lastclick);
+                //  element.scrollIntoView();
+                sessionStorage.removeItem('lastclick');
+            }
+            else {
+                $('#pnlResults').show("slow", function () {
+
+                });
+            }
+
+        }
+
+        $(function () {
+            // if I remember previous selection, load them
+            if (sessionStorage.getItem('assignmentType') != null) {
+                $("#assignmentType").val(sessionStorage.getItem('assignmentType'));
+                $("#assignmentType").trigger('change');
+            }
+               if (sessionStorage.getItem('assignmentTitle') != null) {
+                $("#assignmentTitle").val(sessionStorage.getItem('assignmentTitle'));                
+            }
+            if (sessionStorage.getItem('startdate') != null) {
+                $('#datetimepicker1 input').val(moment(new Date(sessionStorage.getItem('startdate'))).format('LL'));
+            }
+            else {
+                $('#datetimepicker1 input').val(moment(new Date()).format('LL'));
+            }
+            if (sessionStorage.getItem('enddate') != null) {
+                $('#datetimepicker2 input').val(moment(new Date(sessionStorage.getItem('enddate'))).format('LL'));
+            }
+            else {
+                $('#datetimepicker2 input').val('');
+            }
+
+
+            $('#datetimepicker1 input').on('focus', function (e) {
+                $('#datetimepicker1 ').data("DateTimePicker").show();
+                return false;
+            });
+            $('#datetimepicker2 input').on('focus', function (e) {
+                $('#datetimepicker2 ').data("DateTimePicker").show();
+                return false;
+            });
+
+
+            $("#btnPrint").click(function () {
+                gtag('event', 'click', { 'event_category': 'print', 'event_label': 'print button' })
+                print();
+
+            });
+
+            $("#btnRestart").click(function () {
+                gtag('event', 'click', { 'event_category': 'reset', 'event_label': 'start again button' })
+                forget();
+                location.reload(true);
+            });
+
+            $("#assignmentType").change(function () {
+                if ($('#datetimepicker1').data("DateTimePicker").date() != null && $('#datetimepicker2').data("DateTimePicker").date() != null) {
+                    remember($(this).val(), $('#assignmentTitle').val(), $('#datetimepicker1').data("DateTimePicker").date(), $('#datetimepicker2').data("DateTimePicker").date());
+                    calculate($(this).val(), $('#assignmentTitle').val(), $('#datetimepicker1').data("DateTimePicker").date(), $('#datetimepicker2').data("DateTimePicker").date());
+                }
+            });
+            $("#assignmentTitle").on('keypress', function (e) {
+                if (e.which == 13) {
+                    if ($('#datetimepicker1').data("DateTimePicker").date() != null && $('#datetimepicker2').data("DateTimePicker").date() != null) {
+                        remember($("#assignmentType").val(), $('#assignmentTitle').val(), $('#datetimepicker1').data("DateTimePicker").date(), $('#datetimepicker2').data("DateTimePicker").date());
+                        calculate($("#assignmentType").val(), $('#assignmentTitle').val(), $('#datetimepicker1').data("DateTimePicker").date(), $('#datetimepicker2').data("DateTimePicker").date());
+                    }
+                }
+            });
+            $('#datetimepicker1').on('dp.change', function (e) {
+                if ($('#datetimepicker2').data("DateTimePicker") != undefined) {
+                    if ($('#datetimepicker2').data("DateTimePicker").date() != null) {
+                        remember($("#assignmentType").val(), $('#assignmentTitle').val(), e.date, $('#datetimepicker2').data("DateTimePicker").date());
+                        calculate($("#assignmentType").val(),$('#assignmentTitle').val(), e.date, $('#datetimepicker2').data("DateTimePicker").date());
+                    }
+                    if ($('#datetimepicker2').data("DateTimePicker").date() == null) {
+                        $('#datetimepicker2').data("DateTimePicker").minDate($('#datetimepicker1').data("DateTimePicker").date());
+                    }
+                }
+            });
+            $('#datetimepicker2').on('dp.change', function (e) {
+                if ($('#datetimepicker1').data("DateTimePicker").date() != null) {
+                    remember($("#assignmentType").val(), $('#assignmentTitle').val(), $('#datetimepicker1').data("DateTimePicker").date(), e.date);
+                    calculate($("#assignmentType").val(), $('#assignmentTitle').val(),$('#datetimepicker1').data("DateTimePicker").date(), e.date);
+                }
+                if ($('#datetimepicker1').data("DateTimePicker").date() == null) {
+                    $('#datetimepicker1').data("DateTimePicker").maxDate($('#datetimepicker2').data("DateTimePicker").date());
+                }
+            });
+            $('#datetimepicker1').on('keypress', function (e) {
+                e.preventDefault();
+                return false;
+            });
+            $('#datetimepicker2').on('keypress', function (e) {
+                e.preventDefault();
+                return false;
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        $.getScript("https://region-au.libanswers.com/load_chat.php?hash=33fdd00fe69296e1b778714473c259a7", function () {
+            $(".lcs_slide_out-r").css({ "top": "0px" });
+        });
+
+    </script>
+
+</head>
+
+<body>
+    <div class="headerwrap">
+        <div class="logo"><img src="images/calculator.png" /></div>
+        <div class="header">
+            <h1>Schedule Calculator for Assignment Tasks </h1>
+        </div>
+    </div>
+    <div class="container">
+        <br> <br> <br> <br> <br> <br>
+		<p class="intro">
+            This Assignment Calculator is a guide to help you plan and schedule the tasks for this assignment. Start by selecting the type of assignment, add an assignment title, and then select the due date of your assignment. The calculator will then break down your assignment into manageable steps and then schedule these steps, including tips and online resources to help you complete your assignment by the due date. Please keep in mind that the Assignment Calculator is only a guide and you may work at a different pace or have additional tasks that are not listed.
+        </p>
+        		<div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="asignmentType">Assignment Type</label>
+                            <select class="form-control" id="assignmentType">
+                                <option value="general" selected>Stages and Goals of Message Creation -- Concepts Only</option>
+                                <option value="essay">Message Development -- Detailed Steps</option>
+                                <option value="report">Business Report TBD</option>
+                                <option value="presentation">Oral Presentation</option>
+                                <option value="thesis">Persuasive Message -- TBD</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="asignmentTitle">Assignment Title</label>
+                            <input type="text" class="form-control" id="assignmentTitle" />                              
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="datetimepicker1">Start Date</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" readonly />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker1').datetimepicker({
+                                format: 'LL',
+                                useCurrent: false,
+                                ignoreReadonly: true
+                            });
+                        });
+                    </script>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="datetimepicker2">Due Date</label>
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type='text' class="form-control" readonly />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker2').datetimepicker({
+                                    format: 'LL',
+                                    useCurrent: false,
+                                    ignoreReadonly: true,
+                                    minDate: moment()
+                                });
+                            });
+                        </script>
+                    </div>
+                    <!--<div class='col-sm-1'><br />
+        <button type="button" class="btn btn-primary" id="btnCalculate">Calculate</button>
+
+    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group" id="pnlResults" style="display:none">
+            <p>
+                <button type="button" class="btn btn-primary" id="btnPrint">Print this page</button>
+                <button type="button" class="btn btn-primary" id="btnRestart">Start again</button>
+            </p>
+            <div class="panel panel-default" id="step1">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span> </h2>
+                    <h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        Planning will help you get the content right so that what you want to say will be the same as what the audience needs to hear.
+                        <h1>Questions to answer:</h1>
+                        <ul>
+                            <li>Who is the audience?</li>
+                            <li>What are their relevant characteristics?</li>
+                            <li>What makes this audience unique?</li>
+                            <li>How will they react to your message?</li>
+                        </ul>
+                    </div>
+                    <div class="essay-body bodytext">
+                        Start correctly by fully understanding the assignment. Do not ASSUME.
+                        <h1>Things to note:</h1>
+                        <ul>
+                            <li>Read and re-read all instructions provided by the instructor.</li>
+                            <li>Make note of all assignment requirements.</li>
+                            <li>Seek any needed clarification from peers and the instructor.</li>
+                            <li>Visualize what your final message will look like.</li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="report-body bodytext">
+                        In Moodle get your course outline, the assessment task information and the marking criteria.
+                        <h1>Things to note:</h1>
+                        <ul>
+                            <li>Assessment due date</li>
+                            <li>Word limit</li>
+                            <li>Referencing style</li>
+                            <li>Formatting instructions</li>
+                            <li>Submission details</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-body bodytext">
+                        In Moodle get your course outline, the assessment task information and the marking criteria.
+                        <h1>Things to note:</h1>
+                        <ul>
+                            <li>Assessment due date</li>
+                            <li>Word limit referencing</li>
+                            <li>Style formatting</li>
+                            <li>Instructions</li>
+                            <li>Submission details</li>
+                        </ul>
+                    </div>
+
+                    <div class="thesis-body bodytext">
+                        Your interest in your research questions will help you maintain focus on the dissertation process. The work you do may become the starting place for future research work and the next step in your career. Choose a topic that interests you and will help you advance your career. However, your choice of topic will depend on the requirements of your university. Review any documents or handbooks that outline the requirements and expectations.
+                        <h1>Strategies:</h1>
+                        <ul>
+                            <li>Examine the requirements, expectations, and methods used by your department, program, and advisor.</li>
+                            <li>Review completed dissertations in your field, those done by students in your program, with your advisor, and on similar topics.</li>
+                            <li>Set up a system for organizing your search results, citations, PDFs, primary sources, notes etc. using citation management tools (e.g. Zotero, Mendeley, EndNote) or other strategies. You can use these tools to create "in-text" citations and bibliographies or works cited lists as you write.</li>
+                            <li>Do a preliminary study of the literature related to your topics to understand previous research, key themes, issues, variables, methodologies, limitations, terminology, controversies, and gaps in the current research. Identify significant researchers and scholars working in the area. Consult a variety of sources such as websites, research blogs, books, journal articles, conferences, organizations, and other sources.</li>
+                            <li>Narrow your ideas to 2 or 3 possible research questions. Evaluate your question using criteria like feasibility, scope (too narrow or too broad), your level of interest, and future benefit to your career.</li>
+                            <li>The Library has many print and ebooks on the process of writing dissertations. Search for: dissertations, academic; academic writing dissertations and report writing dissertations.</li>
+                        </ul>
+                    </div>
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+                    <button type="button" class="btn btn-default btnAddToCal"><span class="glyphicon glyphicon-download-alt"></span> Download calendar reminder (.ics file) </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="step2">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span></h2>
+                    <h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        <p>Gathering information will help you identify the business problem and help you clarify the objective of the message.</p>
+                        <ul>
+                            <li>How much information does the audience need to know?</li>
+                            <li>What do I want my audience to do as a result of this message?</li>
+                            <li>How do I want my audience to feel so that I achieve my objective?</li>
+                        </ul>
+                    </div>
+                    <div class="essay-body bodytext">
+                        <p>Identify the technical and functional requirements of the assignemnt.</p>
+                        <ul>
+                            <li>Technical requirements include: message format, length, and specific items to be included such as citations or tables and figures.</li>
+                            <li>Functional requirements include the purpose you have in creating the message; important characteristics of the audience; and how you will make the message effective, interesting, and memorable.</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="report-body bodytext">
+                        <p>Read and understand the assessment task by:</p>
+                        <ul>
+                            <li>Identifying keywords (direction, limiting and content words)</li>
+                            <li>Generating ideas</li>
+                            <li>Making a plan or concept map</li>
+                            <li>For groups: allocate roles or tasks and plan meeting times now.</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-body bodytext">
+                        <p>Read and understand the assessment task by:</p>
+                        <ul>
+                            <li>Identifying keywords (direction, limiting and content words)</li>
+                            <li>Generating ideas</li>
+                            <li>Making a plan or concept map</li>
+                            <li>For groups: allocate roles or tasks and plan meeting times now.</li>
+                        </ul>
+                    </div>
+                    <div class="thesis-body bodytext">
+                        <p>The research design is the strategy or blueprint for the collection, measurement, and analysis of your data. Generally, the design is the overall logical structure for your project and the methodology refers to the detailed steps for data collection and analysis. The type of design and method used is determined by the nature of your research question. Certain research designs and methods are core to specific fields of study or programs. Your design needs to be consistent with the requirements and expectations of your advisor, committee, and program.</p>
+                        <h1>Strategies:</h1>
+                        <ol>
+                            <li>Understand that your choice of design and methods will influence the niche you develop for yourself within your department, your discipline, and the wider academic community.</li>
+                            <li>Read and review information about design and methodology (e.g such as books on methodology) and study examples of how these strategies have been applied in research similar to yours (e.g. other dissertations, articles, etc.).</li>
+                            <li>Consider any philosophical and practical factors. Identify the theoretical approaches inherent in your design and methods.</li>
+                        </ol>
+                        <h1>Tips from the Library:</h1>
+                        <ul>
+                            <li>Search Library for books and articles on research theory, design, methods, and analysis.</li>
+                            <li>Read about specific statistical techniques and software packages, for example, SPSS or SAS. For example, Lynda.com offers online tutorials.</li>
+                            <li>Review dissertations with similar designs and methods to learn about what worked well and what obstacles occurred.</li>
+                        </ul>
+                    </div>
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+                    <button type="button" class="btn btn-default btnAddToCal"><span class="glyphicon glyphicon-download-alt"></span> Download calendar reminder (.ics file) </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="step3">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span></h2>
+                    <h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        Frame the primary message by setting up the structure and logic.
+
+                        <ul>
+                            <li>What is the situation that has motivated you to communicate?</li>
+                            <li>What obstacles must you oversome?</li>
+                            <li>How will the message provide a strong argument?</li>
+                            <li>What evidence will you use to support your claim?</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="essay-body bodytext">
+                        Use all available resources (e.g., textbook, Canvas, university library, internet) to find the information you will need for the message.
+                        
+                        <ul>
+                            <li>Review the chosen document format explainer or template file for required message components such as a memo header, inside address for a letter, or how to include citations.</li>
+                            <li>Find and copy the correct document format template.</li>
+                            <li>Review/research background information.</li>
+                            <li>Identify and find evidence to support the position of your message.</li>
+                            <li>Need more help? Ask a Librarian.</li>
+                        </ul>
+                    </div>
+                    <div class="report-body bodytext">
+                        The library is a great place to start looking for information.
+                        <h1>On the library homepage:</h1>
+                        <ul>
+                            <li>Go to Library Guides and find your Subject Guide.</li>
+                            <li>Use the SEARCH box on the Library homepage to locate textbooks and peer-reviewed articles.</li>
+                            <li>While searching, evaluate each source and determine if it is relevant to your assessment task.</li>
+                            <li>Save the full citation for referencing.</li>
+                            <li>Need more help? Ask a Librarian.</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-body bodytext">
+                        The library is a great place to start looking for information.
+                        <h1>On the library homepage:</h1>
+                        <ul>
+                            <li>Go to Library Guides and find your Subject Guide</li>
+                            <li>Use the SEARCH box on the Library homepage to locate textbooks and peer-reviewed articles</li>
+                            <li>While searching, evaluate each source and determine if it is relevant to your assessment task.</li>
+                            <li>Save the full citation for referencing.</li>
+                            <li>Need more help? Ask a Librarian</li>
+                            <li>For groups: Consider using Google Drive or another online platform to share your ideas as you research.</li>
+                        </ul>
+                    </div>
+                    <div class="thesis-body bodytext">
+                        Proposals generally include the title of your project, an introduction, a literature review, and a description of the research design and methodology for your proposed dissertation. This is often used as the foundation for the first three chapters of the completed dissertation. Be sure to read other successful proposals as examples to guide your work. Check with your advisor, mentors, or department for examples.
+                        <h1>Strategies:</h1>
+                        <ol>
+                            <li>Introduction-Use the introduction to establish the context of the research being conducted and to summarize the current and historical understanding about the topic, your rationale, theoretical perspective, and proposed design and methodology. Explain the significance of your question and potential outcomes.</li>
+                            <li>
+                                Review the literature to support your question and explain how your research will fit into the existing literature. Review the literature in your field to:
+                                <ul>
+                                    <li>Develop an in-depth understanding of your topic and clarify why your research is significant</li>
+                                    <li>Ensure that your research is a unique contribution.</li>
+                                    <li>Explore important methodologies, controversies, and research issues.</li>
+                                    <li>Identify the names of key researchers, core journals, other research centres, possible sources of funding.</li>
+                                    <li>Explain your rationale for the research design and methodology and your plan to use and describe why it is appropriate for your research.</li>
+                                    <li>The written literature review is selective and does not include every article or source you find on your topic.</li>
+                                </ul>
+                            </li>
+                            <li>Build a workflow or system so you can keep track of sources (e.g. citation, PDF, etc.) including notes/rationale for sources you are using and for those you choose not to include (with your rationale for excluding them in case your advisor or committee have questions later).</li>
+                        </ol>
+                        <h1>Tips:</h1>
+                        <ul>
+                            <li>Meet with your Faculty librarians to learn about useful library databases, keywords, citation tools, and specialized services for researchers.</li>
+                            <li>Go to workshops or watch recorded workshops.</li>
+                            <li>Use the Student Writing Support resources, especially for graduate writers resources.</li>
+                            <li>Review other dissertations both for ideas on how the literature review can be organized and for useful articles and other sources.</li>
+                            <li>Review what you already have written and presented for your course work and other projects.</li>
+                            <li>Search article databases outside your discipline. Explore interdisciplinary databases such as Web of Science, Google Scholar, Scopus etc.</li>
+                            <li>Browse and search in the core journals in your field.</li>
+                        </ul>
+                    </div>
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+                    <button type="button" class="btn btn-default btnAddToCal"><span class="glyphicon glyphicon-download-alt"></span> Download calendar reminder (.ics file) </button>
+                </div>
+
+            </div>
+            <div class="panel panel-default" id="step4">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span></h2>
+                    <h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        The tone of your message will influence the mood of the audience. What mood do you need them to have and what tone will generate that mood?
+                        
+                        <ul>
+                            <li>Should the style be informal or formal?</li>
+                            <li>Are there any "red flag" words that could create a negative response?</li>
+                            <li>Will your syntax be active or passive?</li>
+							<li>What will be the format of this message: Letter? Email? Memo? Report?</li>
+                        </ul>
+                    </div>
+                    <div class="essay-body bodytext">
+                        Before you create your message, think about how you will present it.
+                        <h1>Some good questions to ask:</h1>
+                        <ul>
+                            <li>Is this an informational, persuasive, or bad news message?</li>
+                            <li>How much information does the audience need?</li>
+                            <li>What is the likely current position of the audience on your topic?</li>
+							<li>How will you arrange your message? What will be the order of your arguments?</li>
+					   </ul>
+                    </div>
+                    <div class="report-body bodytext">
+                        Start to take careful notes with reference details.
+                        <h1>Remember to:</h1>
+                        <ul>
+                            <li>Paraphrase and summarise the most relevant information</li>
+                            <li>Look for patterns within your notes</li>
+                            <li>Organise your notes and link them to your plan</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-body bodytext">
+                        Start to take careful notes with reference details.
+                        <h1>Remember to:</h1>
+                        <ul>
+                            <li>Paraphrase and summarise the most relevant information.</li>
+                            <li>Look for patterns within your notes.</li>
+                            <li>Organise your notes and link them to your plan.</li>
+                        </ul>
+                    </div>
+                    <div class="thesis-body bodytext">
+                        After your proposal is approved, the next step is to implement your research plan by gathering and analysing your data. Before you begin there are more steps to consider if you have not completed these.
+                        <h1>Strategies:</h1>
+                        <ul>
+                            <li>Obtain any needed human subject or animal care approval from the University of Wollongong.</li>
+                            <li>Create a strategy to organize your files, contacts, observations, field notes, and bibliographic information.</li>
+                            <li>Implement a small pilot study before proceeding with the full data collection. This will help you to test your approach to ensure you are collecting data that reflects your research question. Document details such as time involved and issues in the study for either you or the participants. Determine if any modifications to your study need to occur before proceeding.</li>
+                            <li>Identify and test a strategy for transforming and analysing the data (e.g., coding data, transcribing interviews, running statistics, etc.).</li>
+                            <li>Test your analysis method with the small pilot study or sample of your data.</li>
+                            <li>Create graphs, tables, images, and other outputs that illustrate your results.</li>
+                            <li>Meet regularly with your supervisor to discuss and resolve any questions.</li>
+                        </ul>
+                        <h1>Tips from the Library:</h1>
+                        <ul>
+                            <li>Investigate your Research Method to learn more about design and implementation.</li>
+                            <li>Search the Library for books and articles on data visualization, data mining, data processing, methods, and analysis.</li>
+                            <li>Try Lynda.com for online tutorials on data visualization, Excel, charts, graphs, etc.</li>
+                        </ul>
+                    </div>
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+                    <button type="button" class="btn btn-default btnAddToCal"><span class="glyphicon glyphicon-download-alt"></span> Download calendar reminder (.ics file) </button>
+                </div>
+            </div>
+            <div class="panel panel-default" id="step5">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span></h2>
+                    <h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        <p>Make sure you keep on task when writing... don't get distracted or off topic.</p>
+                        <ul>
+                            <li>Write paragraphs that respond to the task, using the information you found.</li>
+                            <li>Follow the structure and format required.</li>
+                            <li>Don't forget to reference each source.</li>
+                            <li>Demonstrate your critical thinking in your writing.</li>
+                        </ul>
+                    </div>
+                    <div class="essay-body bodytext">
+                        <p>Rather than creating the final version first, creat a draft and revise it.</p>
+                        <ul>
+                            <li>Outline the message using the chosen template.</li>
+                            <li>Fill in the outline with complete and connected sentences and paragraphs.</li>
+                            <li>Add any special assignment requirements such as citations.</li>
+                            <li>Put your draft aside for at least 24 hours.</li>
+                            <li>Revise draft and check it against assignment requirements and revise as needed.</li>
+                            <li>Check draft against grading rubric and revise as needed</li>
+                        
+</ul>
+                    </div>
+                    <div class="report-body bodytext">
+                        <p>Make sure you keep on task when writing...don't get distracted or off topic.</p>
+                        <ul>
+                            <li>Follow the structure and format required.</li>
+                            <li>Write paragraphs that respond to the report question, using the information and sources you found.</li>
+                            <li>The specific sections and headings of a report depend on the type of report: business report; lab report etc.</li>
+                            <li>You might also want to ask your lecturer or course coordinator what would be the most appropriate report structure that they prefer for that task.</li>
+                            <li>Don't forget to reference each source you refer to in your report.</li>
+                            <li>Demonstrate your critical thinking in your writing</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-body bodytext">
+                        <p>Make sure you keep on task when writing...don't get distracted or off topic.</p>
+                        <ul>
+                            <li>Follow the structure and format required</li>
+                            <li>Develop your main argument and design a structure to present your argument.</li>
+                            <li>Design your visual aids.</li>
+                            <li>Decide on whether you will use visual aids, and if so, what kind of visual aids you will use. You might use a PowerPoint, whiteboard, artefacts/props, or handouts.</li>
+                            <li>Think about what would be most appropriate for the presentation task you have been assigned and the audience you will be addressing.</li>
+                            <li>If using a PowerPoint, design your slides with text and images.</li>
+                            <li>Make notes for what to say about each slide, and how long you will spend on each slide.</li>
+                            <li>Consider academic integrity and copyright issues when you use images or videos. Ensure you acknowledge all your sources - for both text and images.</li>
+                            <li>For groups: consider using an online presentation platform such as MS PowerPoint Online, Google Slides, or Prezi, so you can continue working on your slides collaboratively even when you’re not together in person.</li>
+                            <li>You might also want to ask your lecturer or course coordinator what would be the most appropriate presentation options.</li>
+                            <li>Don't forget to reference each source.</li>
+                            <li>Demonstrate your critical thinking in your writing.</li>
+                            <li>Tip: In preparing your talk, only write as much as you can say in the allocated time schedule. A good guide is 125 words per minute (e.g. approx. 1,250 words if you are speaking for 10 minutes).</li>
+                            <li>If possible, practise your presentation in the room you will present in to identify any visual issues (colour, word size, etc.)</li>
+                        </ul>
+                    </div>
+                    <div class="thesis-body bodytext">
+                        <h1>Results Section:</h1>
+                        <p>The results section of your dissertation is the place to report your findings based on the data you gathered. This section should appear in a logical sequence based on your methodology. State your findings without interpretation.</p>
+                        <ul>
+                            <li>Use non-text objects to illustrate your results including tables, figures, images and visualizations. Illustrative objects should be placed either within the dissertation text or at the end of your dissertation.</li>
+                            <li>Summarize all your results whether they are statistically significant or not.</li>
+                            <li>Put raw data, survey instruments, and release forms, etc. into appendices if appropriate and required.</li>
+                        </ul>
+                        <h1>Discussion Section:</h1>
+                        <p>The discussion section is often considered the core of your dissertation. It gives context to your research, explains what your results mean, and the relevance. As part of the discussion, incorporate elements of your literature review and describe the significance and implications of what you found.</p>
+                        <ul>
+                            <li>Include your research questions identified in the introduction. Describe how you have moved the field forward. Explain how your research enhances or fills a gap in existing research. Identify any unexpected or contradictory findings.</li>
+                            <li>Explain how your results relate to existing literature and if they are consistent with previous research.</li>
+                            <li>Describe how your results can be applied. This could take a variety of forms such as real world application, best practices or recommendations.</li>
+                        </ul>
+                        <h1>Update the Introduction and Literature Review.</h1>
+                        <ul><li>Review and update your introduction and literature review sections to ensure that they are accurate and current.</li></ul>
+                        <h1>Write the Conclusion.</h1>
+                        <ul>
+                            <li>Share the conclusion you have reached because of your research.</li>
+                            <li>Explain limitations in your research and possibilities for future research on your topic.</li>
+                        </ul>
+                        <h1>Tips from the Library:</h1>
+                        <ul>
+                            <li>Meet with a Faculty Librarian to do precise searching if you need to find additional sources.</li>
+                            <li>Meet with Learning Development for support with your writing process.</li>
+                        </ul>
+                    </div>
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+                    <button type="button" class="btn btn-default btnAddToCal"><span class="glyphicon glyphicon-download-alt"></span> Download calendar reminder (.ics file) </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="step6">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span></h2>
+                    <h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        <p>Use a checklist to make sure you have:</p>
+                        <ul>
+                            <li>Answered the assessment tasks and stayed on topic,</li>
+                            <li>Covered all parts and identified any gaps,</li>
+                            <li>Used the correct referencing style,</li>
+                            <li>Aligned to the marking criteria,</li>
+                            <li>Formatted and referenced correctly, and</li>
+                            <li>Checked for grammatical and stylistic errors.</li>
+                        </ul>
+                    </div>
+                    <div class="essay-body bodytext">
+                        <p>Use critical eyes to review your draft.</p>
+                        <ul>
+                            <li>Do a self-review pretending to be the audience.</li>
+                            <li>Use an editing tool such as Word's Reviewer/Editor. Note: You may need to turn on some review areas at File/Options/Proofing/Writing Style/Settings.</li>
+                            <li>Ask peers such as a classmate, fellow student, or maybe a family member to critically read your message and offer suggested improvements.</li>
+                            <li>Most assignments will also required that you submit your draft to the instructor for review and feedback.</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="report-body bodytext">
+                        <p>Use a checklist to make sure you have</p>
+                        <ul>
+                            <li>Answered the essay question and stayed on topic</li>
+                            <li>Covered all parts required in the report and identified any gaps</li>
+                            <li>Used the correct referencing style</li>
+                            <li>Aligned to the marking criteria</li>
+                            <li>Formatted the report and referenced correctly</li>
+                            <li>Checked for grammatical and stylistic errors</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-body bodytext">
+                        <p>Use a checklist to make sure you have</p>
+                        <ul>
+                            <li>Answered the essay question and stayed on topic.</li>
+                            <li>Covered all parts and identified any gaps.</li>
+                            <li>Practise without an audience to check that the organisation and timing of your content works well. It can be helpful to video yourself (e.g. using your phone) or practise in front of a mirror so you can see what the audience sees.</li>
+                            <li>
+                                Reflect on how it went:
+                                <ul>
+                                    <li>What worked well?</li>
+                                    <li>What didn’t work so well?</li>
+                                    <li>At what points were there problems in the flow?</li>
+                                    <li>How did you feel?</li>
+                                </ul>
+                            </li>
+                            <li>Make changes to your presentation based on your reflections. Think of questions the audience might ask and prepare some answers.</li>
+                            <li>For groups: If you take turns to speak, you could offer constructive feedback to each other. Make sure you think of ways to encourage each other as well as suggesting ways to improve.</li>
+                            <li>If you have time practice in front on someone and ask for constructive feedback.</li>
+                            <li>Ensure you use the correct referencing style.</li>
+                            <li>Check your assignment aligns to the marking criteria and is formatted and referenced correctly.</li>
+                            <li>Lastly check for grammatical and stylistic errors.</li>
+                        </ul>
+                    </div>
+                    <div class="thesis-body bodytext">
+                        <p>Although editing and revising occurs throughout the writing process, budget sufficient time to return to your draft for full-scale revision. Seeking feedback, reviewing, and editing your document helps you to:</p>
+                        <ul>
+                            <li>See your text from a reader's perspective.</li>
+                            <li>Examine the overall organisation and identify what is no longer relevant and what sections need further development. Bring together parts written at different times to create a coherent, connected whole.</li>
+                            <li>Make your ideas clear to others, which in turn, will result in better reader comments.</li>
+                            <li>Make changes to your presentation based on your reflections. Think of questions the audience might ask and prepare some answers.</li>
+                            <li>Plan and negotiate your progress in consultation with your advisor and committee members.</li>
+                        </ul>
+                        <h1>Strategies:</h1>
+                        <ol>
+                            <li>Separate large-scale revision from small-scale editing and proofreading, making sure to make large changes in organisation and content first rather than spending hours smoothing out a sentence you will end up cutting.</li>
+                            <li>
+                                Ask colleagues and others for specific types of feedback to guide the comments. Connect with your dissertation support network and members of your committee to receive constructive feedback.
+                                <ul>
+                                    <li>Help your readers help you by giving them a direction, for example in a cover letter, in which you explain what you want to accomplish in the draft and list your specific questions and concerns.</li>
+                                    <li>Identify potential readers' expertise and skills when deciding which parts of your dissertation you want them to review. For example, perhaps only people working in your lab can constructively comment on your "methods," while friends in other disciplines would give useful feedback on the "introduction."</li>
+                                    <li>Respond to all comments even though you may decide to not incorporate a suggestion.</li>
+                                    <li>Negotiate with your advisor and committee members to establish a process for submitting drafts for their feedback.</li>
+                                </ul>
+                            </li>
+                            <li>Check all calculations, visual details, and citations for accuracy and validity and remove sources you are no longer citing or add new ones.</li>
+                            <li>Prepare the bibliography, appendix, title page, and acknowledgements.</li>
+                            <li>Be sure you are formatting your document to meet the University requirements.</li>
+                        </ol>
+                        <h1>Prepare for defence:</h1>
+                        <p>Your defence is your final opportunity to present your dissertation as a coherent, intelligent product to the committee members who will read and evaluate it. Moreover, although the defence is a challenging prospect, remember it is your chance to share your work with interested colleagues, who will give you valuable feedback.</p>
+                        <ul>
+                            <li>You may or may not be expected to give a brief presentation at the beginning.</li>
+                            <li>Focus on the needs of your primary audience (your advisor and committee), either by consulting them directly or considering their feedback to your initial draft.</li>
+                            <li>Review your notes and rationale for making the decisions you made in your draft for example, including or excluding certain seminal theories, authors, and research methodologies.</li>
+                            <li>Remind yourself that at this point you are now the "expert" on your research and the goal of the defence is to present and share your expertise and seek feedback from interested readers.</li>
+                        </ul>
+                        <p>Note: Check deadlines for commencement and submission of the dissertation.</p>
+                    </div>
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+                    <button type="button" class="btn btn-default btnAddToCal"><span class="glyphicon glyphicon-download-alt"></span> Download calendar reminder (.ics file) </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="step7">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span></h2>
+                    <h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        <p>Make sure you include all parts of your assessment when you submit it. There are no second chances!</p>
+
+                        <ul>
+                            <li>Do you need to print off a hardcopy or upload to Moodle?</li>
+                            <li>Do you need an assessment cover sheet?</li>
+                            <li>Have you checked your assessment through Turnitin and made the necessary changes? It can take up to 24 hours to generate an originality report.</li>
+                        </ul>
+                    </div>
+                    <div class="essay-body bodytext">
+                        <p>Critically review the feedback you receive from others and decide if/how you will revise your draft based on their feedback.</p>
+                        <ul>
+                            <li>Ensure you understand the rationale for each suggested change or comment.</li>
+                            <li>Imagine if the reviewer asked what you thought of each revision suggestion. What would you say? Why?</li>
+                            <li>Act on the feedback you received by revising accordingly.</li>
+                        </ul>
+                    </div>
+                    <div class="report-body bodytext">
+                        <p>Make sure you include all parts of your assessment when you submit it. There are no second chances!</p>
+                        <ul>
+                            <li>Do you need to print off a hardcopy or upload to Moodle? Or do you need to do both?</li>
+                            <li>Do you need an assessment cover sheet?</li>
+                            <li>Have you checked your assessment through Turnitin and made the necessary changes?</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-body bodytext">
+                        <p>Make sure you include all parts of your assessment when you submit it. There are no second chances!</p>
+                        <ul>
+                            <li>Do you need to print off a hardcopy or upload to Moodle?</li>
+                            <li>Do you need an assessment cover sheet?</li>
+                            <li>Ensure you have all your materials ready to present. Gather your slideshow files, handouts, or props.</li>
+                            <li>If using Powerpoint, load your presentation onto a portable data storage device, e.g. USB stick, or ensure it is stored in a 'cloud' storage platform that you can access from the room you will present in. It's good to have multiple copies of it in case one version becomes inaccessible for some reason.</li>
+                            <li>If you’re planning to present from your own computer or device, ensure you also bring any necessary adaptors so that you can connect your computer or device to the projector.</li>
+                            <li>For groups: Ensure that each of you has the most recent version of the presentation. Make sure you know who is responsible for bringing a computer and adaptor, if necessary, or any other props.</li>
+                            <li>Have you checked your assessment through Turnitin and made the necessary changes?</li>
+                        </ul>
+                    </div>
+                    <div class="thesis-body bodytext">
+                        <p>Make sure you include all parts of your assessment when you submit it. There are no second chances!</p>
+                        <p>Your dissertation defence committee will have informed you that you passed your defence, or passed with minor revisions needed. In some cases, substantial revisions are needed before the committee members agree to pass the dissertation. The procedures, requirements, and timelines for completing the dissertation process may vary depending on the department with which you are affiliated and the type of doctorate you will receive. Once any needed revisions have been completed and approved, you are ready to finish the dissertation and submit the final version to the Graduate School.</p>
+                        <h1>Tips from the Library:</h1>
+                        <ul>
+                            <li>When submitting your dissertation consider your rights as an author. For example, you may want to retain your legal rights to the copyright for your work.</li>
+                        </ul>
+                        <p><strong>CONGRATULATIONS</strong> you have completed your dissertation!</p>
+                    </div>
+
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+                    <button type="button" class="btn btn-default btnAddToCal"><span class="glyphicon glyphicon-download-alt"></span> Download calendar reminder (.ics file) </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="step8">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span></h2>
+					<h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        When you get your assessment results, read your tutor's feedback. There may be valuable tips to
+                        help you improve your next assessment task. Use the links in this calculator to learn more about
+                        the areas you need to improve.
+                    </div>
+                    <div class="essay-body bodytext">
+                        Submit you message BEFORE the deadline.
+                    </div>
+                    <div class="report-body bodytext">
+                        When you get your assessment results, read your tutor's feedback. There may be valuable tips to help you improve your next assessment task. Use the links in this calculator to learn more about the areas you need to improve.
+                    </div>
+                    <div class="presentation-body bodytext">
+                        When you get your assessment results, read your tutor's feedback. There may be valuable tips to help you improve your next assessment task. Use the links in this calculator to learn more about the areas you need to improve.
+                    </div>
+                    <div class="thesis-body bodytext">
+
+                    </div>
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+
+                </div>
+            </div>
+<div class="panel panel-default" id="step9">
+                <div class="panel-heading">
+                    <h2>By <span class="date"></span></h2>
+					<h1><span class="title"></span></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="general-body bodytext">
+                        THIS IS NEW STEP 9  When you get your assessment results, read your tutor's feedback. There may be valuable tips to
+                        help you improve your next assessment task. Use the links in this calculator to learn more about
+                        the areas you need to improve.
+                    </div>
+                    <div class="essay-body bodytext">
+                        When you get your assessment results, look at the grade, the rubric scores, and any instructor comments. There may be valuable tips to help you improve your next assessment task. Use the links in this calculator to learn more about the areas you need to improve.
+							<ul>
+                            <li>Identify areas needing improvement.</li>
+                            <li>Identify areas where your performance seems to be good.</li>
+                            <li>For the next assignment, commit to doing more of what you are success at and less of what you are not.</li>
+                            
+                        </ul>
+					</div>
+                    <div class="report-body bodytext">
+                        When you get your assessment results, read your tutor's feedback. There may be valuable tips to help you improve your next assessment task. Use the links in this calculator to learn more about the areas you need to improve.
+                    </div>
+                    <div class="presentation-body bodytext">
+                        When you get your assessment results, read your tutor's feedback. There may be valuable tips to help you improve your next assessment task. Use the links in this calculator to learn more about the areas you need to improve.
+                    </div>
+                    <div class="thesis-body bodytext">
+
+                    </div>
+                    <h1>Helpful Links:</h1>
+                    <div class="links"></div>
+
+                </div>
+            </div>
+
+        </div>
+        <small>Based on the <a href="https://ltc.uow.edu.au/AssignmentCalculator/" target="_blank">Assignment Calculator</a> from the <a href="https://ltc.uow.edu.au/hub" target="_blank">University of Wollongong</a></small>
+    </div>
+</body>
+<div id="libchat_33fdd00fe69296e1b778714473c259a7"></div>
+
+</html>
